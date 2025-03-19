@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>victorharoarq</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="preload" href="index.css" as="style">
+    <link rel="stylesheet" href="index.css">
+    <link rel="shortcut icon" href="work/ICONO PAGINA2.jpg" type="image/x-icon">
+</head>
+<body>
+    <nav class="nav">
+        <div class="nav__container">
+            <h1 class="nav__title">victorharoarq</h1>
+            <div class="icons-container">
+                <div class="nav-buttons">
+                    <button onclick="scrollToSection(event, 'home')">Home</button>
+                    <button onclick="scrollToSection(event, 'products')">Products</button>
+                    <button onclick="scrollToSection(event, 'portafolio')">Portfolio</button>
+                </div>
+                <a href="https://www.youtube.com/@victorharoarq" target="_blank"><img src="icons/youtube (16px).png" ></a>
+                <a href="https://www.instagram.com/victorharoarq/" target="_blank"><img src="icons/logotipo-de-instagram 16px.png"></a>
+                <a href="https://www.linkedin.com/in/victor-haro-877173325/" target="_blank"><img src="icons/linkedin 16px.png"></a>
+            </div>
+            <div class="menu-container">
+            <a href="#menu" class="nav__menu"><img src="icons/icons8-menú.svg" class="nav__icon"></a>
+            <a href="#" class="nav__menu nav__menu--second"><img src="icons/boton-x.png" class="nav__icon "></a>
+            <ul class="dropdown" id="menu">
+                <li class="dropdown__list">
+                    <a href="#home" class="dropdown__link" onclick="scrollToSection(event, 'home')">
+                        <img src="icons/casa.png" class="dropdown__icon">
+                        <span class="dropdown__span">Home</span>
+                    </a>
+                </li>
+                <li class="dropdown__list">
+                    <a href="#products" class="dropdown__link" onclick="scrollToSection(event, 'products')">
+                        <img src="icons/agregar-producto.png" class="dropdown__icon">
+                        <span class="dropdown__span">Products</span>
+                    </a>                
+                </li>
+                <li class="dropdown__list">
+                    <a href="#portafolio" class="dropdown__link" onclick="scrollToSection(event, 'portafolio')">
+                        <img src="icons/expediente.png" class="dropdown__icon">
+                        <span class="dropdown__span">Portfolio</span>
+                    </a>                
+                </li>
+            </ul>
+        </div>
+        </div>
+    </nav>
+
+    <section id="home">
+        <div class="presentation-container">
+            <div class="text-container animate__animated animate__backInLeft" >
+                <h1>¡Hola!, Soy <span class="highlight">Victor Haro</span></h1>
+                <p>Arquitecto y creador de contenido con la misión de inspirar a la próxima generación de arquitectos.</p>
+                <div class="btn-container animate__animated animate__swing" style="animation-delay: 1.4s">
+                    <button 
+                        onclick="scrollToSection(event, 'products')">Ver Más    
+                    </button>
+                </div>
+            </div>
+            <div class="image1-container animate__animated animate__backInRight">
+                <img src="work/ICONO PAGINA2.jpg" alt="Imagen 1">
+            </div>
+        </div>
+    </section>
+    <section id="transparent-rect">
+        <div class="video-background-container">
+            <video class="video-background" autoplay loop muted playsinline>
+            <source src="work/Bienvenidos a nuestra iglesia.mp4" type="video/mp4"></video>
+        </div>
+        <div class="image2-container">
+            <img src="work/IMG_1702.2.jpeg" alt="Imagen 2">
+        </div>
+        <h1>victorharoarq</h1>
+    </section>
+    <section id="products">
+        <div class="product-section">
+            <div class="text-content">
+                <div class="heading-intro" data-animation="zoomInLeft" style="animation-delay: 0.1s;">
+                    <h2><span class="highlight">Productos Populares</span></h2>
+                    <p>
+                    Con 5 años de experiencia en Arquitectura, tanto como
+                    estudiante como asistente de arquitectura,
+                    estos productos han sido diseñados para ayudarte a crear
+                    un trabajo del que estés orgulloso.
+                    </p>
+                </div>
+                <div class="image2-content">
+                    <img src="work/IMG_1689.JPG" alt="Architecture Example" />
+                </div>
+                <div class="product-info" data-animation="zoomInLeft" style="animation-delay: 0.2s;">
+                    <p><span class="highligh-text">Construye tu estilo gráfico arquitectónico: </span>
+                    Taller de dibujo, plantillas para softwares y más.</p>
+                    <button data-animation="swing" style="animation-delay: 1.5s;"  
+                    onclick="window.open('https://victorharoarq.gumroad.com/l/zilazo?layout=profile', '_blank')">
+                    Ver Productos
+                    </button>
+                </div>
+            </div>
+            <div class="image-content" data-animation="zoomInUp" style="animation-delay: 0.3s;">
+                <img src="work/IMG_1687.2.jpeg" alt="Architecture Example" />
+            </div>
+        </div>
+    </section>
+    <section id="img-gallery">
+        <div class="swiper mySwiper container">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="swiper-txt">
+                    </div>
+                    <img src="work2/02.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-txt">
+                    </div>
+                    <img src="work2/03.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-txt">
+                    </div>
+                    <img src="work2/04.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-txt">
+                    </div>
+                    <img src="work2/05.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-txt">
+                    </div>
+                    <img src="work2/06.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-txt">
+                    </div>
+                    <img src="work2/07.jpg" alt="">
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-txt">
+                    </div>
+                    <img src="work2/08.jpg" alt="">
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="portafolio">
+        <div class="portafolio-section">
+            <div class="title-n-btn">
+                <div class="title-p-container">
+                    <h1>Mi trabajo </h1>
+                </div>
+                <div class="description2-container">
+                    <p><span class="highligh-text">Victor Haro es un Arquitecto, 
+                        especialista en metodolgía BIM y creador de contenido.</span> 
+                        <br> <br>Su contenido  en Instagram y YouTube muestra la vida de un
+                            diseñador arquitectónico. La marca <span class="highligh-text">victorharoarq</span>
+                            tiene un enfoque innovador para documentar la carrera de Victor 
+                            en arquitectura. Este camino se ha convertido en una plataforma para que
+                            los estudiantes se relacionen, busquen asesoramiento y se beneficien
+                            de esta comunidad</p>
+                </div>
+                <div class="btn-p-container">
+                    <button data-animation="swing" style="animation-delay: 0.5s;"  
+                    onclick="window.open('https://issuu.com/victor.haro/docs/main_architecture_portfolio_victor_haro', '_blank')">
+                    Ver Portafolio
+                    </button>
+                </div>
+            </div>
+            <div class="description-container">
+                <p><span class="highligh-text">Victor Haro es un Arquitecto, 
+                    especialista en metodolgía BIM y creador de contenido.</span> 
+                    <br> <br>Su contenido  en Instagram y YouTube muestra la vida de un
+                        diseñador arquitectónico. La marca <span class="highligh-text">victorharoarq</span>
+                        tiene un enfoque innovador para documentar la carrera de Victor 
+                        en arquitectura. Este camino se ha convertido en una plataforma para que
+                        los estudiantes se relacionen, busquen asesoramiento y se beneficien
+                        de esta comunidad</p>
+            </div>
+        </div>
+    </section>
+    <footer>
+        <p> ©2025 victorharoarq</p>
+        <div class="social-icons">
+            <a href="#"><img src="icons/logotipo-de-instagram.png" alt="Instagram"></a>
+            <a href="#"><img src="icons/brand-youtube.svg" alt="YouTube"></a>
+            <a href="#"><img src="icons/linkedin.png" alt="LinkedIn"></a>
+        </div>
+    </footer>
+    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>
+    <script src="index.js"></script>
+</body>
+</html>

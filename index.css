@@ -1,0 +1,846 @@
+/*MEJORA LA IMPLEMENTACIÓN DE LOS "REM" */
+html{
+    font-size: 62.5%;
+}
+body{
+    font-size: 16px;/*1rem = 10px*/
+}
+* {
+    margin: 0;
+    box-sizing: border-box;
+    padding: 0;
+}
+
+body {
+    font-family: 'Helvetica Neue',sans-serif;  
+}
+/*PRINCIPIO DE EDICIÓN DE BARRA DE NAVEGACIÓN*/
+.nav {
+    padding: 2vh 0vh;
+    background-color:   #eaeaea;
+    --img1: scale(1);
+    --img2: scale(0);
+    z-index: 1000;
+}
+
+.nav:has(.dropdown:target) {
+    --img1: scale(0);
+    --img2: scale(1);
+    --clip: inset(0 0 0 0);
+}
+
+.nav__container {
+    width: 90%;
+    margin: 0 auto;
+    height: 70px;
+    display: grid;
+    grid-template-columns: max-content max-content;
+    grid-template-areas: "title icons-container ";
+    justify-content: space-between;
+    align-items: center;
+    overflow: hidden;
+}
+
+.nav__title {
+    cursor: pointer;
+    color: #000000;
+    grid-area: title;
+    font-size: 2rem;
+}
+.icons-container {
+    display: flex;
+    gap: 16px; /* Espaciado fijo entre los iconos */
+}
+.nav-buttons {
+    display: flex;
+    gap: 15px; /* Espacio horizontal entre botones */
+}
+.nav-buttons button {
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1.5rem;
+    cursor: pointer;
+    font-family: sans-serif;
+    transition: color 0.3s ease;
+}
+.nav-buttons button:hover {
+color: #000;
+}
+.menu-container {
+    display: none;
+}
+.nav__menu {
+    grid-area: img;
+    position: relative;
+    z-index: 10;
+    transform: var(--img1);
+}
+
+.nav__menu--second {
+    transform: var(--img2);
+}
+
+.nav__icon {
+    width: 30px;
+    display: block;
+}
+
+.dropdown {
+    position: absolute;
+    background-color: #7c7c7c;
+    width: 75%;
+    max-width: 30vh;
+    max-height: fit-content;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    padding: 1rem;
+    display: grid;
+    align-content: center;
+    gap: 1rem;
+    overflow-y: auto;
+    clip-path: var(--clip, inset(0 0 100% 100%));
+    transition: clip-path .5s;
+}
+
+.dropdown__list {
+    list-style: none;
+}
+
+.dropdown__link {
+    color: rgb(221, 221, 221);
+    padding: 2rem .9rem;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: .6rem;
+    position: relative;
+    background-color: var(--bg, transparent);
+    border-radius: 6px;
+}
+
+.dropdown__list:has(:checked) {
+    --rows: 1fr;
+    --rotate: rotate(180deg);
+    --bg: #28303B;
+}
+
+.dropdown__check {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    opacity: 0;
+    cursor: pointer;
+}
+
+.dropdown__arrow {
+    margin-left: auto;
+    transform: var(--rotate, 0);
+    transition: .2s transform;
+}
+
+.dropdown__content {
+    display: grid;
+    grid-template-rows: var(--rows, 0fr);
+    transition: .3s grid-template-rows;
+}
+
+.dropdown__sub {
+    overflow: hidden;
+}
+
+.dropdown__li {
+    width: 85%;
+    list-style: none;
+    margin-left: auto;
+}
+
+.dropdown__anchor {
+    padding: 1rem 0;
+    display: block;
+    color: #B6BABE;
+    text-decoration: none;
+}
+
+.highlight{
+    background: #d9e4ee; /* color de fondo suave */
+    display: inline-block;
+    padding: 0 0.3rem;
+}
+@media (max-width: 720px) {
+    .nav__container {
+        width: 90%;
+        margin: 0 auto;
+        height: fit-content;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        grid-template-areas: 
+            "title menu-container"
+            "icons-container icons-container";
+        align-items: center;
+        overflow: hidden;
+        gap: 10px;
+    }
+    .nav{
+        height: auto;
+    }
+    .nav-buttons {
+        display: none;
+    }
+    .nav__title{
+        margin-top: 0;
+    }
+    .menu-container {
+        display: grid;
+        justify-self: end; /* Alinea el menú al final (derecha) */
+    }
+    .icons-container {
+        margin-top: 80px;
+        grid-area: title; /* Coloca los íconos en la misma área que el título */
+        justify-content: start; /* Alinea los íconos a la izquierda */
+        gap: 15px; /* Espaciado entre el título y los íconos */
+    }
+}
+/*FIN DE EDICIÓN DE LA BARRA DE NAVEGACIÓN*/
+/*CONTENEDOR DE PRESENTACIÓN*/
+.presentation-container {
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    height: 64.5rem;
+    gap: 100px;
+}
+.image1-container img {
+    width: 40rem;
+    height: 40rem;
+    border-radius: 5%;
+}
+.text-container {
+    display: flex;
+    flex-direction: column;
+    width: 30rem;
+    gap: 15px;
+}
+.text-container h1 {
+    font-size: 4rem;
+    font-weight: 700;
+}
+.text-container p {
+    font-size: 1.8rem;
+}
+.btn-container{
+    margin-top: 20px;
+}
+.btn-container button {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f7f7f7;
+    color: #000000;
+    padding: 1rem 3rem;
+    width: auto;
+    border-radius: 100px;
+    border-color: #000000;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    animation: pulse 2s ease, 2s ease;
+}
+.btn-container button:hover{
+    background-color: #000000;
+    color: #f7f7f7;
+}
+/*FIN DE CONTENEDOR DE PRESENTACIÓN*/
+/*VIDEO DE FONDO*/
+.video-background-container {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -2; /* Detrás del contenido */
+overflow: hidden;
+}
+.video-background {
+position: relative;
+top: 50%;
+left: 50%;
+width: 100%;
+height: 100%;
+object-fit: cover;
+transform: translate(-50%, -50%);
+}
+.image2-container{
+    display: none;
+}
+.btn-container{
+    width: fit-content;
+}
+/*FIN DEL VIDEO DE FONDO*/
+/*INICIO DE PRODUCT SECTION*/
+.product-section{
+    display: flex;
+    align-items: center;
+    justify-content:center;
+    gap: 50px;
+}
+.text-content{
+    display: flex;
+    flex-direction: column;
+    gap: 100px;
+}
+.heading-intro{
+    width: 400px;
+}
+.heading-intro h2{
+    font-size: 3.9rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+}
+.product-info{
+    width: 40rem;
+}
+.product-info p{
+    font-size: 2.4rem;
+}
+.image-content{
+    margin-top: 14em;
+    overflow: hidden;
+}
+.image-content img{
+    width: 50vw;
+    height: 50vh;
+}
+.highligh-text{
+    font-weight: bold;
+}
+.product-info button{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #f7f7f7;
+    color: #000000;
+    padding: 1rem 2rem;
+    width: fit-content;
+    border-radius: 100px;
+    border-color: #000000;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 30px;
+}
+.product-info button:hover{
+    background-color: #000000;
+    color: #f7f7f7;
+}
+.image2-content{
+    display: none;
+}
+/*FIN DE PRODUCT SECTION*/
+/*INICIO PORTFOLIO*/
+.portafolio-section{
+    display: flex;
+    flex-direction: wrap;
+}
+.title-n-btn{
+    display: flex; /* Usar flexbox */
+    justify-content: center; /* Centrar horizontalmente */
+    align-items: center; /* Centrar verticalmente */
+    width: 80%;
+    height: auto;
+    flex-direction: column; /* Asegura que los elementos se apilen verticalmente */
+    gap: 20px; /* Espaciado entre los elementos */
+    margin: 10vh 5vh;
+}
+.title-p-container{
+    width: fit-content;
+    height: fit-content;
+}
+.title-p-container h1{
+    color: #d7d7d8;
+    font-size: 6rem;
+}
+.btn-p-container{
+    width: fit-content;
+    height: fit-content;
+    align-items: start;
+}
+.btn-p-container button{
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #d9e5ef;
+    color: #000000;
+    padding: 1rem 2rem;
+    border-radius: 100px;
+    border-color: #000000;
+    cursor: pointer;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    margin-top: 30px;
+}
+.btn-p-container button:hover{
+    background-color: #90a5bb;
+    color: #ffffff;
+}
+.description-container{
+    background-color: #d9e5ef;
+    padding: 100px;
+    display: flex;
+    width: 100%;
+
+}
+.description-container p{
+    font-size: 1.8rem;
+}
+.description2-container{
+    background-color: #d9e5ef;
+    padding: 100px;
+    display: none;
+    width: 100%;
+
+}
+.description2-container p{
+    font-size: 2.5rem;
+}
+/*FIN PORTFOLIO*/
+/*INICIO DE CARRUSEL DE IMAGENES*/
+.container{
+    max-width: 1040px;
+    margin: 0 auto;
+}
+.swiper-slide{
+    margin-bottom: 50px;
+    background-color: #ffffff;
+    box-shadow: 0 20px 20px rgba(0,0,0,0.2);
+    border-radius: 15px;
+    height: 420px;
+    width: 295px;
+    position: relative;
+}
+.swiper-slide img{
+    width: 295px;
+    border-radius: 15px;
+    height: 420px;
+}
+.swiper-txt{
+    position: absolute;
+    padding: 25px;
+}
+@media(max-width:991px){
+    .swiper{
+        padding: 0 70px;
+    }
+    .swiper-slide img{
+        width: 100%;
+    }
+}
+/*FIN CARRUSEL DE IMAGENES*/
+/*INICIO FOOTER*/
+footer {
+    background-color: #696b70; /* Fondo oscuro */
+    color: #ffffff; /* Texto blanco */
+    padding: 20px 0; /* Espaciado vertical */
+    text-align: center; /* Centrar el texto */
+    position: relative; /* Para posicionar elementos dentro del footer */
+    display: flex; /* Usar flexbox */
+    justify-content: space-between; /* Separar los elementos horizontalmente */
+    align-items: center; /* Centrar los elementos verticalmente */
+    flex-wrap: wrap; /* Permitir que los elementos se envuelvan en pantallas pequeñas */
+    padding: 10px 20px;
+}
+
+footer p {
+    margin: 0; /* Eliminar márgenes */
+    font-size: 2rem; /* Tamaño de fuente */
+}
+
+footer .social-icons {
+    margin-top: 10px; /* Espaciado superior */
+}
+
+footer .social-icons a {
+    color: #61dafb; /* Color de los enlaces */
+    text-decoration: none; /* Sin subrayado */
+    margin: 0 10px; /* Espaciado horizontal */
+    transition: color 0.3s ease; /* Transición suave */
+}
+
+footer .social-icons a:hover {
+    color: #21a1f1; /* Color al pasar el cursor */
+}
+
+footer .social-icons img {
+    width: 24px; /* Tamaño de los iconos */
+    height: 24px; /* Tamaño de los iconos */
+    margin: 0 5px; /* Espaciado entre los iconos */
+    transition: transform 0.3s ease; /* Transición suave */
+}
+
+footer .social-icons img:hover {
+    transform: scale(1.2); /* Efecto de agrandamiento al pasar el cursor */
+}
+/*FIN FOOTER*/
+/*SECCIONES*/
+#transparent-rect{
+    height: 12em;
+    background-color: #0000002a;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 6vh;
+    color: #ffffff;
+}
+#home{
+    height: auto;
+    background-color: #f7f7f7;
+}
+#products{
+    display: flex;
+    flex-direction: wrap;
+    height: auto;
+    align-items: center;
+    justify-content: center;
+    background-color: #f7f7f7;
+    padding: 30px 0;
+}
+#portafolio{
+    height: auto;
+    background-color: #f7f7f7;
+}
+#img-gallery{
+    background: linear-gradient(
+        180deg, 
+        rgba(204, 204, 204, 1) 0%,
+        rgba(238, 238, 238, 1) 50%,
+        rgba(204, 204, 204, 1) 100%
+    );
+    padding: 40px 0;
+}
+@media (min-width: 768px) and (max-width: 1024px) {
+    .nav{
+        height: auto;
+    }
+    .nav-buttons button{
+        font-size: 1.5vh;
+    }
+    .presentation-container {
+        flex-direction: column-reverse;
+        height: auto;
+        gap: 50px;
+        padding: 5em;
+    }
+    .image1-container img {
+        max-width: 100%;
+        width: 400px;
+        height: auto;
+    }
+    .text-container{
+        width: 30vw;
+    }
+    .text-container h1 {
+        font-size: 2rem;
+    }
+    .text-container p {
+        font-size: 0.9rem;
+    }
+    #transparent-rect{
+        width: auto;
+        height: 40vw;
+        background-color: rgba(0, 0, 0, 0.2); /* Fondo transparente */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5vh;
+        color: #ffffff;
+        position: relative; /* Asegura que el contenido dentro de #transparent-rect se posicione correctamente */   
+    }
+    .video-background{
+        display: none;
+    }
+    .image2-container {
+        position: absolute; /* Posiciona la imagen detrás del #transparent-rect */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Asegura que la imagen esté detrás del #transparent-rect */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .image2-container img {
+        width: 100%;
+        max-width: 100%;
+        max-height: auto;
+        height: 100%;
+    }
+    .text-content{
+        gap: 5rem;
+    }
+    .product-section{
+        gap: 20px;
+    }
+    .product-info{
+        width: 30rem;
+
+    }
+    .product-info p{
+        font-size: 2rem;
+    }
+    .image-content img{
+        width: 40rem;
+        height: 25rem;
+    }
+    .swiper{
+        padding: 30px 70px;
+    }
+    .swiper-slide{
+        width: auto;
+    }
+    .swiper-slide img{
+        width: 100%;
+    }
+    .portafolio-section{
+        display: flex;
+        flex-direction: wrap;
+    }
+    .title-n-btn{
+        padding: 7vh 0vh;
+    }
+    .title-p-container h1{
+        color: #d7d7d8;
+        font-size: 6vh;
+    }
+    .description-container p{
+        font-size: 2.2vw;
+    }
+    .description2-container{
+        display: none;
+    }
+}
+
+@media (min-width: 600px ) and (max-width: 767px) {
+    #transparent-rect{
+        width: auto;
+        height: 70vh;
+        background-color: rgba(0, 0, 0, 0.2); /* Fondo transparente */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5vh;
+        color: #ffffff;
+        position: relative; /* Asegura que el contenido dentro de #transparent-rect se posicione correctamente */   
+    }
+    .image2-container {
+        position: absolute; /* Posiciona la imagen detrás del #transparent-rect */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Asegura que la imagen esté detrás del #transparent-rect */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .image2-container img {
+        width: 100%;
+        max-width: 100%;
+        max-height: auto;
+        height: 100%;
+    }
+    .video-background-container{
+        display: none;
+    }
+    .nav{
+        height: auto;
+    }
+    .presentation-container {
+        flex-direction: column;
+        height: auto;
+        gap: 50px;
+        padding: 20% ;
+    }
+    .image1-container img {
+        max-width: 100%;
+        width: 300px;
+        height: auto;
+    }
+    .text-container h1 {
+        font-size: 2rem;
+    }
+    .text-container p {
+        font-size: 0.9rem;
+    }
+    .dropdown{
+        max-width: 50vh;
+    }
+    .product-section{
+        display: flex;
+        flex-direction: column; /* Organiza los elementos en una columna (verticalmente) */
+        align-content: center; /* Centra los elementos horizontalmente */
+        text-align: start; /* Centra el texto */
+        
+    }
+    .heading-intro{
+        width: 100%;
+        max-width: 100%;
+    }
+    .heading-intro h2{
+        font-size: 5vh; ;
+    }
+    .heading-intro p{
+        font-size: 1.8vh;
+    }
+    .text-content{
+        gap: 50px;
+    }
+    .product-info{
+        width: 41vh;
+    }
+    .product-info p{
+    font-size: 1.5rem;
+    }
+    .image2-content{
+        display: inline-block;
+        width: 100%;
+        max-width: 100%;
+    }
+    .image2-content img{
+        width: auto;
+        height: auto;
+        max-width: 100%;
+    }
+    .image-content{
+    display: none;
+    }
+    .swiper{
+        padding: 0 70px;
+    }
+    .swiper-slide img{
+        width: 70%;
+    }
+    
+}
+@media (min-width: 320px) and (max-width: 599px) {
+    #transparent-rect{
+        width: auto;
+        height: 30vh;
+        background-color: rgba(0, 0, 0, 0.4); /* Fondo transparente */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 5vh;
+        color: #ffffff;
+        position: relative; /* Asegura que el contenido dentro de #transparent-rect se posicione correctamente */   
+    }
+    .image2-container {
+        position: absolute; /* Posiciona la imagen detrás del #transparent-rect */
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1; /* Asegura que la imagen esté detrás del #transparent-rect */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+    }
+    .image2-container img {
+        width: 100%;
+        max-width: 100%;
+        max-height: auto;
+        height: 100%;
+    }
+    .video-background-container{
+        display: none;
+    }
+    #transparent-rect h1{
+        font-size: 5vh;
+    }
+    .nav{
+        height: auto;
+    }
+    .presentation-container {
+        flex-direction: column-reverse;
+        height: auto;
+        gap: 50px;
+        padding: 5em 0em ;
+    }
+    .image1-container img {
+        max-width: 100%;
+        width: 30vh;
+        height: auto;
+    }
+    .text-container{
+        width: 30vh;
+    }
+    .text-container h1 {
+        font-size: 3rem;
+    }
+    .text-container p {
+        font-size: 1.5rem;
+    }
+    .product-section{
+        display: flex;
+        flex-direction: column; /* Organiza los elementos en una columna (verticalmente) */
+        align-content: center; /* Centra los elementos horizontalmente */
+        text-align: start; /* Centra el texto */
+        padding: 2.5em 0em; 
+        
+    }
+    .heading-intro{
+        width: 40vh;
+        height: fit-content;
+        margin: 0vw 5vw;
+    }
+    .heading-intro h2 span{
+        font-size: 3.2rem;
+    }
+    .heading-intro p{
+        font-size: 1.5rem;
+    }
+    .text-content{
+        gap: 50px;
+    }
+    .product-info{
+        width: 30rem;
+        margin: 0vw 5vw;
+    }
+    .product-info p{
+    font-size: 2rem;
+    }
+    .image2-content{
+        display: inline-flex;
+        width: 100%;
+        height: 90%;
+    }
+    .image2-content img{
+        width: auto;
+        height: auto;
+        max-width: 100%;
+    }
+    .image-content{
+        display: none;
+    }
+    .portafolio-section{
+        display: flex;
+        flex-direction: column;
+    }
+    .title-p-container h1{
+        color: #d7d7d8;
+        font-size: 7vh;
+    }
+    .title-n-btn{
+        width: 100%;
+        margin: 10vh 0vh;
+        align-items: start; /* Centrar verticalmente */
+    }
+    .description-container{
+        display: none;
+    }
+    .description2-container{
+        background-color: #d9e5ef;
+        padding: 10px;
+        display: flex;
+        position: end;
+        width: 100%;
+    }
+    .description2-container p{
+        font-size: 2.1vh;
+    }
+    footer p{
+        font-size: 1.7rem;
+    }
+    }
