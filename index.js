@@ -9,22 +9,32 @@ function scrollToSection(event, id) {
         //document.querySelector('.nav__menu--second').click();
     }
 }
-var swiper = new Swiper(".mySwiper",{
+var swiper = new Swiper(".mySwiper", {
     slidesPerView: 1,
     spaceBetween: 80,
     grabCursor: true,
     loop: true,
-    breakpoints:{
-        991:{
+    navigation: {
+        nextEl: '.scroll-indicator.right',
+        prevEl: '.scroll-indicator.left',
+    },
+    breakpoints: {
+        991: {
             slidesPerView: 3,
-        }
-        ,768:{
+        },
+        768: {
             slidesPerView: 2,
         }
     }
-    
-} 
-)
+});
+
+function scrollLeft() {
+    swiper.slidePrev();
+}
+
+function scrollRight() {
+    swiper.slideNext();
+}
 document.addEventListener("DOMContentLoaded", function () {
     function isInViewport(element) {
     const rect = element.getBoundingClientRect();
