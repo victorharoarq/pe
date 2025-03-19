@@ -428,13 +428,13 @@ transform: translate(-50%, -50%);
 }
 
 .scroll-indicator .arrow {
-    width: 30px; /* Ajusta el tamaño según sea necesario */
-    height: 30px; /* Ajusta el tamaño según sea necesario */
+    width: 64px;
+    height: 64px;
     transition: transform 0.3s ease;
 }
 
 .scroll-indicator .arrow:hover {
-    transform: scale(1.2); /* Efecto de agrandamiento al pasar el cursor */
+    transform: scale(1.2);
 }
 @media(max-width:991px){
     .swiper{
